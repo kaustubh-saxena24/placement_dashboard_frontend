@@ -93,7 +93,7 @@ const ActionButton = ({ item, onApplySuccess, onShowPlaced, appliedIds }) => {
       onOk: async () => {
         setLoading(true);
         try {
-          await axios.post('http://localhost:5000/api/applications', {
+          await axios.post('https://placement-dashboard-u8av.onrender.com/api/applications', {
             studentId: studentId,
             companyId: item.id,
           });
