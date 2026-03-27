@@ -14,7 +14,7 @@ import Home from './pages/HomePage.jsx'
 import { Analytics } from './pages/Analytics.jsx'
 import Update from './pages/Update.jsx'
 import Schedule from './pages/Schedule.jsx'
-import Support from './pages/Support.jsx'
+import ContactInfo from './pages/ContactInfor.jsx'
 import CollegeLoginPage from './pages/College/CollegeLogin.jsx'
 import CollegeDashboard from './pages/College/CollegeDashboard.jsx'
 import PostJobPage from './pages/College/JobPost.jsx'
@@ -47,7 +47,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="update" element={<Update />} />
             <Route path="schedule" element={<Schedule />} />
             <Route path="search" element={<SearchPage />} />
-            <Route path="support" element={<Support />} />
+            <Route path="contact-info" element={<ContactInfo />} />
           </Route>
         </Routes>
       </App>

@@ -16,7 +16,7 @@ export default function Sidebar() {
     { to: "/Update", icon: <Settings size={20} />, text: "Update" },
   ];
 
-  const helpLinks = [{ to: "/support", icon: <HelpCircle size={20} />, text: "Support" }];
+  const helpLinks = [{ to: "/contact-info", icon: <HelpCircle size={20} />, text: "Contact Info" }];
 
   return (
     <aside className="w-[20%] max-w-64 min-w-48 h-screen bg-white flex flex-col justify-between border-r border-gray-200">

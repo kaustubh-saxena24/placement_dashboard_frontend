@@ -79,14 +79,7 @@ const Header = () => {
       </div>
 
      
-      <div className="flex items-center gap-6 ml-6">
-        {/* Notification Bell */}
-        <div className="relative cursor-pointer">
-          <BellIcon className="text-gray-600 w-6 h-6" />
-          <span className="absolute -top-1 -right-1 flex items-center justify-center bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full">
-            3
-          </span>
-        </div>
+     
 
         
         <div className="relative">
@@ -117,7 +110,7 @@ const Header = () => {
             </div>
           )}
         </div>
-      </div>
+      
     </header>
   );
 };
