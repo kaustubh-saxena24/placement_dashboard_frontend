@@ -241,25 +241,23 @@ const DepartmentAnalytics = () => {
   );
 };
 
-
 const CircularSegment = () => {
   const [departmentData, setDepartmentData] = useState([]);
   const [totalStudents, setTotalStudents] = useState(0);
 
-  
   const branchColors = {
     "Computer Science": "#3B82F6",
     "Information Technology": "#1D4ED8",
     "Electronics": "#F59E0B",
+    "ECE": "#F59E0B", // Added just in case it's in your DB
     "Civil": "#10B981",
     "Mechanical": "#EF4444",
-   
   };
-  
+
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const res = await axios.get('https://placement-dashboard-u8av.onrender.com/api/students');
+        const res = await axios.get('http://localhost:5000/api/students');
         const students = res.data || [];
         setTotalStudents(students.length);
 
@@ -286,55 +284,68 @@ const CircularSegment = () => {
     fetchStudentData();
   }, []);
 
-  const CircleSegment = ({ color, circumference, offset }) => (
-    <circle
-      className="transition-all duration-500 ease-in-out"
-      cx="60"
-      cy="60"
-      r="50"
-      fill="none"
-      stroke={color}
-      strokeWidth="10"
-      strokeDasharray={`${circumference} ${circumference}`} // Fix: Use template literal for full circle
-      strokeDashoffset={offset}
-      strokeLinecap="round"
-    />
-  );
-
   return (
     <div className="bg-white/70 backdrop-blur-sm p-6 rounded-3xl shadow-lg border border-white/50 w-full flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
       
+      {/* Chart Container */}
       <div className="flex-shrink-0 relative w-48 h-48">
         <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+          {/* Base Gray Circle */}
           <circle cx="60" cy="60" r="50" fill="none" stroke="#E5E7EB" strokeWidth="10" />
+          
+          {/* Dynamic Colored Segments */}
           {(() => {
-            const totalCircumference = 2 * Math.PI * 50;
-            let offset = totalCircumference;
+            const circumference = 2 * Math.PI * 50;
+            let currentOffset = 0; // Tracks where the next segment should start
+
             return departmentData.map((data, index) => {
-              if (totalStudents === 0) return null; // Avoid division by zero
-              const segmentLength = (data.value / totalStudents) * totalCircumference;
-              offset -= segmentLength; // This logic works by "drawing" segments backward
+              if (totalStudents === 0) return null; 
+
+              // How long this specific color segment should be
+              const segmentLength = (data.value / totalStudents) * circumference;
+              
+              // The offset to apply to this specific circle
+              const offsetToUse = currentOffset;
+
+              // Add current length to offset so the NEXT circle starts after this one
+              currentOffset += segmentLength;
+
               return (
-                <CircleSegment key={index} color={data.color} circumference={totalCircumference} offset={offset} />
+                <circle
+                  key={index}
+                  cx="60"
+                  cy="60"
+                  r="50"
+                  fill="none"
+                  stroke={data.color}
+                  strokeWidth="10"
+                  // Dash pattern: [Draw length, Leave transparent length]
+                  strokeDasharray={`${segmentLength} ${circumference}`}
+                  // Shift the start of the dash backward (clockwise)
+                  strokeDashoffset={-offsetToUse}
+                  className="transition-all duration-1000 ease-out"
+                />
               );
             });
           })()}
         </svg>
+
+        {/* Center Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <span className="text-gray-600 text-sm">Students</span>
           <span className="text-blue-600 font-bold text-3xl mt-1">{totalStudents}</span>
         </div>
       </div>
 
-      
+      {/* Legend Container */}
       <div className="flex-grow w-full">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Total Students</h2>
         <div className="grid grid-cols-2 gap-4">
           {departmentData.map((dept, index) => (
             <div key={index} className="flex items-center space-x-2">
-              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: dept.color }}></span>
+              <span className="h-3 w-3 rounded-full shadow-sm" style={{ backgroundColor: dept.color }}></span>
               <span className="text-sm text-gray-700 truncate" title={dept.name}>{dept.name}</span>
-              <span className="text-sm font-semibold text-gray-800">{dept.value}</span>
+              <span className="text-sm font-semibold text-gray-800 ml-auto">{dept.value}</span>
             </div>
           ))}
         </div>
