@@ -41,7 +41,7 @@ const DashboardCard = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`http://localhost:5000/api/analytics/stats`, {
+        const response = await axios.get(`https://placement-dashboard-u8av.onrender.com/api/analytics/stats`, {
           params: { filter: activeFilter }
         });
         setStats(response.data);

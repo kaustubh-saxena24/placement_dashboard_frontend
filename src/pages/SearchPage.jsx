@@ -39,7 +39,7 @@ export default function SearchPage() {
     const fetchStudents = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/students');
+        const response = await axios.get('https://placement-dashboard-u8av.onrender.com/api/students');
         setAllStudents(response.data);
         setFilteredStudents(response.data); // Show all by default
       } catch (err) {

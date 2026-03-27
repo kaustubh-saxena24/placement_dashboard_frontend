@@ -3,7 +3,7 @@ import axios from 'axios';
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserPlus, FilePlus, LogOut, FileText,RefreshCw ,Briefcase} from "lucide-react";
 
-const API_BASE_URL = 'http://localhost:5000/api'; 
+const API_BASE_URL = 'https://placement-dashboard-u8av.onrender.com/api'; 
 
 // --- Custom Icons for Stats (Kept as requested) ---
 const UpArrowIcon = () => (

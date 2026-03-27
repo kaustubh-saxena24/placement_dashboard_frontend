@@ -37,7 +37,7 @@ export default function Settings() {
     const fetchStudentData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/students/${studentId}`);
+        const response = await axios.get(`https://placement-dashboard-u8av.onrender.com/api/students/${studentId}`);
         setStudent(response.data);
         
         // Pre-fill form with existing data

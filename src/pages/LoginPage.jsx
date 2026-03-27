@@ -15,7 +15,7 @@ export default function LoginPage() {
 
     try {
       // Send login request to the auth endpoint
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('https://placement-dashboard-u8av.onrender.com/api/auth/login', {
         email: values.email,
         password: values.password,
       });

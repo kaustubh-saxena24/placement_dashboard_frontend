@@ -14,7 +14,7 @@ export default function CollegeLoginPage() {
 
     try {
      
-      const response = await axios.post('http://localhost:5000/api/college/login', {
+      const response = await axios.post('https://placement-dashboard-u8av.onrender.com/api/college/login', {
         email: values.email,
         password: values.password,
       });

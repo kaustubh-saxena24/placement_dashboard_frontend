@@ -19,7 +19,7 @@ const DashboardCard = () => {
       setLoading(true);
       try {
         // Fetch stats from our new API endpoint
-        const res = await axios.get(`http://localhost:5000/api/analytics/stats?filter=${activeFilter}`);
+        const res = await axios.get(`https://placement-dashboard-u8av.onrender.com/api/analytics/stats?filter=${activeFilter}`);
         
         const { placedStudents, companyVisits, appPerCompany } = res.data;
 

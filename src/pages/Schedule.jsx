@@ -288,7 +288,7 @@ const PlacedStudentsModal = ({ item, open, onClose }) => {
         setLoading(true);
         setError('');
         try {
-          const response = await axios.get(`http://localhost:5000/api/companies/${item.id}/placed-students`);
+          const response = await axios.get(`https://placement-dashboard-u8av.onrender.com/api/companies/${item.id}/placed-students`);
           setStudents(response.data);
         } catch (err) {
           setError(err.response?.data?.message || 'Failed to fetch students.');

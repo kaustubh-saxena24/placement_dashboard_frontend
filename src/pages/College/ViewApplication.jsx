@@ -15,7 +15,7 @@ import {
     Briefcase
 } from "lucide-react";
 
-const API_BASE_URL = 'http://localhost:5000/api'; 
+const API_BASE_URL = 'https://placement-dashboard-u8av.onrender.com/api'; 
 
 // --- 1. Sidebar Component (Exact copy for consistency) ---
 function Sidebar() {
