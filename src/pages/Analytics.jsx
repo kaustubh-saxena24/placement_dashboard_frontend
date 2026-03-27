@@ -257,7 +257,7 @@ const CircularSegment = () => {
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/students');
+        const res = await axios.get('https://placement-dashboard-u8av.onrender.com/api/students');
         const students = res.data || [];
         setTotalStudents(students.length);
 
