@@ -138,7 +138,7 @@ function UpcomingCompanies() {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get('http://localhost:5000/api/companies');
+        const response = await axios.get('https://placement-dashboard-u8av.onrender.com/api/companies');
         
         // Filter for only "Upcoming" and "Ongoing" companies for this table
         const relevantCompanies = response.data.filter(
