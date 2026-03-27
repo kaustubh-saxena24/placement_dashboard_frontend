@@ -156,7 +156,7 @@ function AddStudentForm() {
 
         try {
             
-            const response = await axios.post('http://localhost:5000/api/students', payload);
+            const response = await axios.post('https://placement-dashboard-u8av.onrender.com/api/students', payload);
 
             setSuccess(true);
             setFormData(initialState); 
