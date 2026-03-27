@@ -358,7 +358,7 @@ export default function Schedule() {
     // 1. Fetch Companies
     const fetchScheduleData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/companies');
+        const response = await axios.get('https://placement-dashboard-u8av.onrender.com/api/companies');
 
         const transformedData = response.data.map(company => ({
           id: company._id,
@@ -392,7 +392,7 @@ export default function Schedule() {
         if(!studentId) return;
 
         try {
-            const res = await axios.get(`http://localhost:5000/api/applications/student/${studentId}`);
+            const res = await axios.get(`https://placement-dashboard-u8av.onrender.com/api/applications/student/${studentId}`);
             if(res.data.success) {
                 // Assuming res.data.data is an array of application objects { company: "companyId", ... }
                 const appliedCompanyIds = new Set(res.data.data.map(app => app.company));
