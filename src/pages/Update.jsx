@@ -95,7 +95,7 @@ export default function Settings() {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/students/${studentId}/request-update`,
+        `https://placement-dashboard-u8av.onrender.com/api/students/${studentId}/request-update`,
         updateRequestData
       );
       
